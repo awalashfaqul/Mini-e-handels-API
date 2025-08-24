@@ -1,0 +1,33 @@
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/appsettings.Development.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/appsettings.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Mini e-handels-API
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Mini e-handels-API.deps.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Mini e-handels-API.runtimeconfig.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Mini e-handels-API.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Mini e-handels-API.pdb
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Microsoft.AspNetCore.OpenApi.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Microsoft.OpenApi.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/bin/Debug/net8.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.csproj.AssemblyReference.cache
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.AssemblyInfoInputs.cache
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.AssemblyInfo.cs
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.csproj.CoreCompileInputs.cache
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.MvcApplicationPartsAssemblyInfo.cs
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.MvcApplicationPartsAssemblyInfo.cache
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets.build.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets.development.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets/msbuild.Mini e-handels-API.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets/msbuild.build.Mini e-handels-API.props
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Mini e-handels-API.props
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Mini e-handels-API.props
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/staticwebassets.pack.json
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/scopedcss/bundle/Mini e-handels-API.styles.css
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-h.F62834F2.Up2Date
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/refint/Mini e-handels-API.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.pdb
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.genruntimeconfig.cache
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/ref/Mini e-handels-API.dll
