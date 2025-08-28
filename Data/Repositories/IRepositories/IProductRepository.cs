@@ -15,5 +15,6 @@ namespace Mini_e_handels_API.Data.Repositories.IRepositories
         void AddProduct(Product product); // Add a new product
         //void UpdateProduct(Product product); // Update an existing product
         void DeleteProduct(int id); // Delete a product by its ID
+        IEnumerable<Product> GetByCategory(int categoryId); // Retrieve all products belonging to a specific category
     }
 }
