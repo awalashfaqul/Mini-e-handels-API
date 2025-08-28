@@ -10,7 +10,7 @@ namespace Mini_e_handels_API.Data.Repositories
 
     public class InMemoryProductRepository : IProductRepository
     {
-        private readonly List<Product> _products = new ();
+        private readonly List<Product> _products = new();
 
         public void AddProduct(Product product)
         {
@@ -30,15 +30,32 @@ namespace Mini_e_handels_API.Data.Repositories
             }
         }
 
+        public IEnumerable<Product> GetAllProducts()
+        {
+            return _products;
+        }
 
-        public IEnumerable<Product> GetAllProducts() => _products;
-        //{
-          //  throw new NotImplementedException();
-        //}
+        public Product GetProductById(int id)
+        {
+            return _products.FirstOrDefault(p => p.Id == id);
+        }
 
-        public Product GetProductById(int id) => _products.FirstOrDefault(p => p.Id == id);
-        //{
-           //   throw new NotImplementedException();
-        //}
+        public void UpdateProduct(Product product)
+        {
+            var existingProduct = GetProductById(product.Id);
+            if (existingProduct != null)
+            {
+                existingProduct.Name = product.Name;
+                existingProduct.Price = product.Price;
+                existingProduct.CategoryId = product.CategoryId;
+                existingProduct.Description = product.Description;
+                
+            }
+        }
+
+        public IEnumerable<Product> GetByCategory(int categoryId)
+        {
+            return _products.Where(p => p.CategoryId == categoryId);
+        }
     }
 }
