@@ -13,6 +13,6 @@ namespace Mini_e_handels_API.Models
         
         public string Category { get; set; }   // Category of the product
         public int Price { get; set; }          // Price of the product
-        
+        public int CategoryId { get; set; }     // Foreign key for the category
     }
 }
