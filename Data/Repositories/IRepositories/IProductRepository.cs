@@ -13,7 +13,7 @@ namespace Mini_e_handels_API.Data.Repositories.IRepositories
         IEnumerable<Product> GetAllProducts(); // Retrieve all products
         Product GetProductById(int id); // Retrieve a product by its ID
         void AddProduct(Product product); // Add a new product
-        //void UpdateProduct(Product product); // Update an existing product
+        void UpdateProduct(Product product); // Update an existing product
         void DeleteProduct(int id); // Delete a product by its ID
         IEnumerable<Product> GetByCategory(int categoryId); // Retrieve all products belonging to a specific category
     }
