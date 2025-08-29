@@ -10,8 +10,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Register the InMemoryProductRepository as a singleton service
 // This ensures that the same instance is used throughout the application lifecycle
-builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
-builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>();
+builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>(); // Stage 1 : a small API in .NET Core that manages a product catalog
+builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>(); // Stage 2: Extend the API to manage products & categories
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
