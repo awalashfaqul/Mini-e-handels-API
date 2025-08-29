@@ -11,7 +11,7 @@ using Mini_e_handels_API.Models;
 namespace Mini_e_handels_API.Controllers
 {
 
-    [ApiController] 
+    [ApiController]
     [Route("api/[controller]")]
     public class ProductController : ControllerBase
     {
@@ -39,15 +39,20 @@ namespace Mini_e_handels_API.Controllers
         public IActionResult AddProduct(Product product)
         {
             _productRepository.AddProduct(product);
-            return Ok (new { message = "Product added successfully."});
+            return Ok(new { message = "Product added successfully." });
         }
 
         [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             _productRepository.DeleteProduct(id);
-            return Ok (new { message = "Product deleted successfully."});
+            return Ok(new { message = "Product deleted successfully." });
         }
-
+        
+        [HttpGet("category/{categoryId}")]
+        public IEnumerable<Product> GetByCategory(int categoryId)
+        {
+            return _productRepository.GetByCategory(categoryId);
+        }
     }
 }
