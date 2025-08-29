@@ -13,7 +13,7 @@ namespace Mini_e_handels_API.Data.Repositories.IRepositories
         IEnumerable<Category> GetAllCategories(); // Retrieve all categories
         Category GetCategoryById(int id); // Retrieve a category by its ID
         void AddCategory(Category category); // Add a new category
-        //void UpdateCategory(Category category); // Update an existing category
+        void UpdateCategory(Category category); // Update an existing category
         void DeleteCategory(int id); // Delete a category by its ID
     }
 }
