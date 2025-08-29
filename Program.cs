@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 // Register the InMemoryProductRepository as a singleton service
 // This ensures that the same instance is used throughout the application lifecycle
 builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>();
+builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
