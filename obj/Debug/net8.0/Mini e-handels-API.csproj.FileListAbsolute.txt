@@ -31,3 +31,4 @@
 /Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.pdb
 /Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.genruntimeconfig.cache
 /Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/ref/Mini e-handels-API.dll
+/Users/ashfaqul/Desktop/Resume/CGI - Systemutvecklare-J0524-1157/Mini e-handels-API/obj/Debug/net8.0/Mini e-handels-API.sourcelink.json
