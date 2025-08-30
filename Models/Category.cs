@@ -10,5 +10,7 @@ namespace Mini_e_handels_API.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Product> Products { get; set; } = new();
+        // Navigation property
+        //public ICollection<Product> Products { get; set; }
     }
 }
