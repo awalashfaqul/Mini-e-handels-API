@@ -36,5 +36,43 @@ namespace Mini_e_handels_API.Controllers
             var orders = _orderRepository.GetAll();
             return Ok(orders);
         }
+
+        [HttpPost]
+        public IActionResult Create(ShoppingOrder order)
+        {
+            _orderRepository.Create(order);
+            return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, ShoppingOrder order)
+        {
+            if (id != order.Id)
+            {
+                return BadRequest();
+            }
+
+            var existingOrder = _orderRepository.GetById(id);
+            if (existingOrder == null)
+            {
+                return NotFound();
+            }
+
+            _orderRepository.Update(order);
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
+        {
+            var existingOrder = _orderRepository.GetById(id);
+            if (existingOrder == null)
+            {
+                return NotFound();
+            }
+
+            _orderRepository.Delete(id);
+            return NoContent();
+        }
     }
 }
