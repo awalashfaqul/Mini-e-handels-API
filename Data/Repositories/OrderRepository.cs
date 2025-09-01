@@ -32,5 +32,30 @@ namespace Mini_e_handels_API.Data.Repositories
         {
             return _orders.FirstOrDefault(o => o.Id == id);
         }
+
+        public void Create(ShoppingOrder order)
+        {
+            order.Id = _orders.Count + 1;
+            _orders.Add(order);
+        }
+
+        public void Update(ShoppingOrder order)
+        {
+            var existingOrder = GetById(order.Id);
+            if (existingOrder != null)
+            {
+                _orders.Remove(existingOrder);
+                _orders.Add(order);
+            }
+        }
+
+        public void Delete(int id)
+        {
+            var order = GetById(id);
+            if (order != null)
+            {
+                _orders.Remove(order);
+            }
+        }
     }
 }
