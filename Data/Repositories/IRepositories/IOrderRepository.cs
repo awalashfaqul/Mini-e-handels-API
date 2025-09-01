@@ -11,5 +11,8 @@ namespace Mini_e_handels_API.Data.Repositories.IRepositories
         ShoppingOrder CreateOrder(ShoppingCart cart);
         IEnumerable<ShoppingOrder> GetAll();
         ShoppingOrder GetById(int id);
+        void Create(ShoppingOrder order);
+        void Update(ShoppingOrder order);
+        void Delete(int id);
     }
 }
