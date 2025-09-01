@@ -13,7 +13,7 @@ builder.Services.AddControllers();
 builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>(); // Stage 1 : a small API in .NET Core that manages a product catalog
 builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>(); // Stage 2: Extend the API to manage products & categories
 builder.Services.AddSingleton<ICartRepository, InMemoryCartRepository>(); // Stage 3: Extend the API to manage shopping carts
-builder.Services.AddSingleton<IOrderRepository, OrderRepository>(); // Stage 4: Extend the API to manage orders
+builder.Services.AddSingleton<IOrderRepository, OrderRepository>(); // Stage 3: Extend the API to manage orders
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
