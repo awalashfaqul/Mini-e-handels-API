@@ -6,7 +6,7 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 
 ---
 
-## 🚀 Features
+## Features
 
 * **Stage 1: Product Catalog** → Manage products
 * **Stage 2: Categories** → Organize products into categories
@@ -155,7 +155,7 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 
 ---
 
-## 🗄️ Database Schema (Draft for SQL Migration)
+## Database Schema (Draft for SQL Migration)
 
 When moving away from InMemory, a **SQL schema** could look like this:
 
@@ -223,7 +223,7 @@ CREATE TABLE PersonalizedContents (
 
 ---
 
-## 📜 License
+## License
 
 MIT License – free to use and modify.
 
