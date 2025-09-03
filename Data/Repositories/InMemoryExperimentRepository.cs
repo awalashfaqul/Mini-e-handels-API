@@ -28,7 +28,7 @@ namespace Mini_e_handels_API.Data.Repositories
 
         public Experiment Get(int id)
         {
-            return _experiments.FirstOrDefault(e => e.Id == id);
+            return _experiments.FirstOrDefault(e => e.experimentId == id);
         }
 
         public string GetVariant(int id)
