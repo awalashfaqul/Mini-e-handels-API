@@ -14,6 +14,8 @@ builder.Services.AddSingleton<IProductRepository, InMemoryProductRepository>(); 
 builder.Services.AddSingleton<ICategoryRepository, InMemoryCategoryRepository>(); // Stage 2: Extend the API to manage products & categories
 builder.Services.AddSingleton<ICartRepository, InMemoryCartRepository>(); // Stage 3: Extend the API to manage shopping carts
 builder.Services.AddSingleton<IOrderRepository, OrderRepository>(); // Stage 3: Extend the API to manage orders
+builder.Services.AddSingleton<IExperimentRepository, InMemoryExperimentRepository>(); // Stage 4: Extend the API to support experimentation
+builder.Services.AddSingleton<IPersonalizationRepository, InMemoryPersonalizationRepository>(); // Stage 4: Extend the API to support personalization and experimentation
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
