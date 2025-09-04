@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Mini_e_handels_API.Data.Repositories;
 using Mini_e_handels_API.Data.Repositories.IRepositories;
+using Mini_e_handels_API.Services;
+using Mini_e_handels_API.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,9 @@ builder.Services.AddSingleton<ICartRepository, InMemoryCartRepository>(); // Sta
 builder.Services.AddSingleton<IOrderRepository, OrderRepository>(); // Stage 3: Extend the API to manage orders
 builder.Services.AddSingleton<IExperimentRepository, InMemoryExperimentRepository>(); // Stage 4: Extend the API to support experimentation
 builder.Services.AddSingleton<IPersonalizationRepository, InMemoryPersonalizationRepository>(); // Stage 4: Extend the API to support personalization and experimentation
+builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>(); // Stage 5: Extend the API to manage customers and their profiles
+builder.Services.AddSingleton<INotificationService, InMemoryNotificationService>();
+builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>(); // new repo
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
