@@ -11,16 +11,43 @@ namespace Mini_e_handels_API.Data.Repositories
     {
         private readonly List<ShoppingOrder> _orders = new();
 
-        public ShoppingOrder CreateOrder(ShoppingCart cart)
+        public ShoppingOrder CreateOrder(ShoppingCart cart, Customer customer = null)
         {
-            var newOrder = new ShoppingOrder
+            decimal discount = 0;
+            string status = "Placed";
+
+            if (customer != null)
+            {
+                // Apply membership discount
+                switch (customer.customersMembershipLevel)
+                {
+                    case "Silver": discount = 0.05m; break; // 5%
+                    case "Gold": discount = 0.1m; break;    // 10%
+                }
+
+                customer.customersTotalOrders += 1; // Increment total orders
+            }
+
+            int totalPrice = cart.TotalPrice;
+            int discountedPrice = (int)(totalPrice * (1 - discount));
+
+            var order = new ShoppingOrder
             {
                 Id = _orders.Count + 1,
+                CustomerId = customer?.customersId,
                 OrderItems = cart.CartItems,
-                TotalAmount = cart.TotalPrice
-            };
-            _orders.Add(newOrder);
-            return newOrder;
+                TotalAmount = discountedPrice,
+                Status = status,
+                DiscountApplied = (decimal)discount * totalPrice,
+                OrderDate = DateTime.Now};
+
+            _orders.Add(order);
+
+            // Link order to customer profile
+            if (customer != null)
+                customer.customersOrderIds.Add(order.Id);
+
+            return order;
         }
 
         public IEnumerable<ShoppingOrder> GetAll()
@@ -56,6 +83,11 @@ namespace Mini_e_handels_API.Data.Repositories
             {
                 _orders.Remove(order);
             }
+        }
+
+        public IEnumerable<ShoppingOrder> GetByCustomerId(int customerId)
+        {
+            return _orders.Where(o => o.CustomerId == customerId);
         }
     }
 }
