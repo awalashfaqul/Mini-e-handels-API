@@ -13,10 +13,20 @@ namespace Mini_e_handels_API.Controllers
     public class OrderController : ControllerBase
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly ICartRepository _cartRepository;
+        private readonly ICustomerRepository _customerRepository;
+        private readonly INotificationService _notificationService;
 
-        public OrderController(IOrderRepository orderRepository)
+        public OrderController(
+            IOrderRepository orderRepository,
+            ICartRepository cartRepository,
+            ICustomerRepository customerRepository,
+            INotificationService notificationService)
         {
             _orderRepository = orderRepository;
+            _cartRepository = cartRepository;
+            _customerRepository = customerRepository;
+            _notificationService = notificationService;
         }
 
         [HttpGet("{id}")]
@@ -74,5 +84,58 @@ namespace Mini_e_handels_API.Controllers
             _orderRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpPost("checkout")]
+        public ActionResult<ShoppingOrder> Checkout(int cartId, [FromQuery] int? customerId = null)
+        {
+            var cart = _cartRepository.GetCartById(cartId);
+            if (cart == null || !cart.CartItems.Any())
+                return BadRequest("Cart is empty");
+
+            Customer customer = null;
+            if (customerId.HasValue)
+                customer = _customerRepository.GetById(customerId.Value);
+
+            var order = _orderRepository.CreateOrder(cart, customer);
+
+            _cartRepository.ClearCart(cartId);
+
+            // Send email notification
+            _notificationService.SendOrderConfirmation(order);
+
+            return Ok(order);
+        }
+
+        [HttpPut("{id}/place")]
+        public IActionResult PlaceOrder(int id)
+        {
+            var order = _orderRepository.GetById(id);
+            if (order == null) return NotFound();
+
+            order.Status = "Placed";
+            _orderRepository.Update(order);
+
+            _notificationService.SendOrderConfirmation(order);
+
+            return Ok(order);
+        }
+
+
+        [HttpPut("{id}/cancel")]
+        public IActionResult CancelOrder(int id)
+        {
+            var order = _orderRepository.GetById(id);
+            if (order == null) return NotFound();
+
+            order.Status = "Cancelled";
+            _orderRepository.Update(order);
+
+            _notificationService.SendOrderCancellation(order);
+
+            return Ok(order);
+        }
+
+
+
     }
 }
