@@ -1,6 +1,7 @@
 # Mini Optimizely CMS + Commerce + Experimentation API
 
-This project is a simplified **e-commerce API** inspired by **Optimizely CMS + Commerce + Experimentation**. It demonstrates how to manage a product catalog, categories, shopping carts, and orders, while also supporting **A/B testing (experiments)** and **personalized content** delivery.
+This project is a simplified **e-commerce API** inspired by **Optimizely CMS + Commerce + Experimentation**.
+It demonstrates how to manage a **product catalog, categories, shopping carts, orders, customers, memberships, notifications**, while also supporting **A/B testing (experiments)** and **personalized content delivery**.
 
 Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast prototyping.
 
@@ -15,29 +16,32 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 
   * Run **A/B experiments** for product or feature testing
   * Serve **personalized content** by customer segment
+* **Stage 5: Customer Management** → Manage customer profiles
+* **Stage 6: Membership Management** → Assign roles, loyalty tiers, and customer groups
+* **Stage 7: Notification Service** → Send order updates and personalized messages
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 * **Backend:** ASP.NET Core Web API
-* **Repositories:** InMemory storage (easily swappable for DB)
+* **Repositories:** InMemory storage (easily swappable for SQL DB)
 * **API Documentation:** Swagger (auto-enabled in development)
 
 ---
 
-## ⚙️ Setup
+## Setup
 
 1. Clone this repository
 
-   ```
+   ```bash
    git clone https://github.com/awalashfaqul/Mini-e-handels-API.git
    cd Mini-e-handels-API
    ```
 
 2. Run the API
 
-   ```
+   ```bash
    dotnet run
    ```
 
@@ -46,29 +50,15 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
    ```
    https://localhost:5246/swagger
    ```
-   or
-   ```
-   https://localhost:5001/swagger
-   ```
 
 ---
 
-## 📌 API Endpoints (via Swagger)
+## API Endpoints (via Swagger)
 
 ### 1️⃣ Products
 
 * **GET** `/api/Product` → Get all products
 * **POST** `/api/Product` → Create new product
-
-**Swagger Example (POST)**
-
-```json
-{
-  "productName": "Laptop",
-  "productPrice": 1200,
-  "productCategory": "Electronics"
-}
-```
 
 ---
 
@@ -77,30 +67,12 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 * **GET** `/api/Category` → Get all categories
 * **POST** `/api/Category` → Add new category
 
-**Swagger Example (POST)**
-
-```json
-{
-  "categoryName": "Electronics"
-}
-```
-
 ---
 
 ### 3️⃣ Cart
 
 * **POST** `/api/Cart/add` → Add product to cart
 * **GET** `/api/Cart/{cartId}` → View cart
-
-**Swagger Example (POST)**
-
-```json
-{
-  "cartId": 1,
-  "productId": 101,
-  "quantity": 2
-}
-```
 
 ---
 
@@ -109,33 +81,13 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 * **POST** `/api/Order` → Place order
 * **GET** `/api/Order/{id}` → Get order by ID
 
-**Swagger Example (POST)**
-
-```json
-{
-  "orderId": 1,
-  "customerName": "Alice",
-  "cartId": 1
-}
-```
-
 ---
 
 ### 5️⃣ Experiments (A/B Testing)
 
 * **POST** `/api/Experiment` → Create new experiment
 * **GET** `/api/Experiment/{id}` → Get experiment details
-* **GET** `/api/Experiment/{id}/variant` → Get random variant (A or B)
-
-**Swagger Example (POST)**
-
-```json
-{
-  "experimentName": "Homepage Banner Test",
-  "experimentVariantA": "Blue Banner",
-  "experimentVariantB": "Red Banner"
-}
-```
+* **GET** `/api/Experiment/{id}/variant` → Get random variant
 
 ---
 
@@ -144,20 +96,30 @@ Built with **ASP.NET Core Web API** using **InMemory Repositories** for fast pro
 * **POST** `/api/Personalization` → Add personalized content
 * **GET** `/api/Personalization/{segment}` → Get content for a customer segment
 
-**Swagger Example (POST)**
+---
 
-```json
-{
-  "pcSegment": "VIP",
-  "pcMessage": "Welcome back VIP! Enjoy 10% discount"
-}
-```
+### 7️⃣ Customer Management
+
+* **POST** `/api/Customer` → Add new customer
+* **GET** `/api/Customer/{id}` → Get customer details
 
 ---
 
-## Database Schema (Draft for SQL Migration)
+### 8️⃣ Membership Management
 
-When moving away from InMemory, a **SQL schema** could look like this:
+* **POST** `/api/Membership` → Assign membership tier or role
+* **GET** `/api/Membership/{customerId}` → Get customer’s membership
+
+---
+
+### 9️⃣ Notification Service
+
+* **POST** `/api/Notification` → Send notification (email/SMS/in-app)
+* **GET** `/api/Notification/{customerId}` → Get all notifications for a customer
+
+---
+
+## 🗄️ Database Schema (SQL Migration Draft)
 
 ```sql
 -- Products
@@ -190,9 +152,35 @@ CREATE TABLE CartItems (
 -- Orders
 CREATE TABLE Orders (
     OrderId INT PRIMARY KEY IDENTITY,
-    CustomerName NVARCHAR(255),
+    CustomerId INT FOREIGN KEY REFERENCES Customers(CustomerId),
     CartId INT FOREIGN KEY REFERENCES Carts(CartId),
     OrderDate DATETIME DEFAULT GETDATE()
+);
+
+-- Customers
+CREATE TABLE Customers (
+    CustomerId INT PRIMARY KEY IDENTITY,
+    CustomerName NVARCHAR(255),
+    Email NVARCHAR(255),
+    Phone NVARCHAR(50)
+);
+
+-- Memberships
+CREATE TABLE Memberships (
+    MembershipId INT PRIMARY KEY IDENTITY,
+    CustomerId INT FOREIGN KEY REFERENCES Customers(CustomerId),
+    Tier NVARCHAR(100), -- e.g., Bronze, Silver, Gold
+    Role NVARCHAR(100), -- e.g., User, Admin
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+-- Notifications
+CREATE TABLE Notifications (
+    NotificationId INT PRIMARY KEY IDENTITY,
+    CustomerId INT FOREIGN KEY REFERENCES Customers(CustomerId),
+    Message NVARCHAR(500),
+    SentAt DATETIME DEFAULT GETDATE(),
+    Status NVARCHAR(50) -- Sent, Delivered, Read
 );
 
 -- Experiments
@@ -213,17 +201,15 @@ CREATE TABLE PersonalizedContents (
 
 ---
 
-## 🔮 Next Steps (Planned)
-* Add persistent database (SQL or NoSQL) instead of InMemory repositories.
-* Build frontend landing page with:
-** React + Tailwind CSS (primary)
-** Bootstrap (optional if needed)
-* Pages: Home, Products, Category, Shopping Cart, Order.
-* Connect personalization & experimentation features to frontend.
+## 🔮 Next Steps
+
+* Build frontend landing page with React + Tailwind CSS
+* Connect personalization & experimentation features to frontend
+* Replace InMemory repositories with SQL or NoSQL persistence
 
 ---
 
-## License
+## 📜 License
 
 MIT License – free to use and modify.
 
