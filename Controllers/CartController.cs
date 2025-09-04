@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Mini_e_handels_API.Data.Repositories.IRepositories;
 using Mini_e_handels_API.Models;
-using Mini_e_handels_API.Data.Repositories;
 
 namespace Mini_e_handels_API.Controllers
 {
@@ -67,19 +66,6 @@ namespace Mini_e_handels_API.Controllers
         {
             _cartRepository.ClearCart(cartId);
             return Ok(new { Message = "Cart cleared" });
-        }
-        [HttpPost("{cartId}/checkout")]
-        public ActionResult<ShoppingOrder> Checkout(int cartId)
-        {
-            var cart = _cartRepository.GetCartById(cartId);
-            if (cart == null || !cart.CartItems.Any())
-            {
-                return BadRequest("Cart is empty");
-            }
-
-            var order = _orderRepository.CreateOrder(cart);
-            _cartRepository.ClearCart(cartId);
-            return Ok(order);
         }
     }
 }
