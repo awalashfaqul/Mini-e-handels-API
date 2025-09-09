@@ -11,9 +11,9 @@ namespace Mini_e_handels_API.Data.Repositories
     {
         private readonly List<ShoppingCart> _carts = new();
 
-        public ShoppingCart GetAllCarts()
+        public IEnumerable<ShoppingCart> GetAllCarts()
         {
-            return _carts.FirstOrDefault();
+            return _carts;
         }
 
         public ShoppingCart GetCartById(int id)
