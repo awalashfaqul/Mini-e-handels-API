@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Mini_e_handels_API.Data.Repositories.IRepositories;
 using Mini_e_handels_API.Models;
+using Mini_e_handels_API.Services.IServices;
 
 namespace Mini_e_handels_API.Controllers
 {
