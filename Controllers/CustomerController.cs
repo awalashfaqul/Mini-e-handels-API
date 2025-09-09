@@ -93,5 +93,6 @@ namespace Mini_e_handels_API.Controllers
 
             var orders = _orderRepository.GetByCustomerId(id);
             return Ok(orders);
+        }
     }
 }
