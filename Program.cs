@@ -20,9 +20,18 @@ builder.Services.AddSingleton<IExperimentRepository, InMemoryExperimentRepositor
 builder.Services.AddSingleton<IPersonalizationRepository, InMemoryPersonalizationRepository>(); // Stage 4: Extend the API to support personalization and experimentation
 builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>(); // Stage 5: Extend the API to manage customers and their profiles
 builder.Services.AddSingleton<INotificationService, InMemoryNotificationService>();
-builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>(); // new repo
+//builder.Services.AddSingleton<ICustomerRepository, InMemoryCustomerRepository>(); // new repo
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy => policy.WithOrigins("http://localhost:5173") // vite default port
+                        .AllowAnyHeader()
+                        .AllowAnyMethod());
+});
+
 
 var app = builder.Build();
 
@@ -33,8 +42,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowFrontend");
+
 app.UseHttpsRedirection();
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
 
