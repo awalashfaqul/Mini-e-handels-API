@@ -10,7 +10,7 @@ namespace Mini_e_handels_API.Data.Repositories.IRepositories
     {
         // Interface for cart repository
         // This interface defines the methods for managing shopping carts in the e-commerce API
-        ShoppingCart GetAllCarts(); // Retrieve all shopping carts
+        IEnumerable<ShoppingCart> GetAllCarts(); // Retrieve all shopping carts
         ShoppingCart CreateCart(); // Create a new shopping cart
         ShoppingCart GetCartById(int id); // Retrieve a shopping cart by its ID
         void AddItem(int cartId, ShoppingCartItem item); // Add a new item to the cart
